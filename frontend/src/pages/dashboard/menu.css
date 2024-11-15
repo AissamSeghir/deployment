@@ -1,0 +1,117 @@
+.dash{
+    display: flex;
+    width: 100vw;
+}
+
+.content {
+    width: 100%;
+    overflow-y: auto;
+}
+.profile{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    color: aliceblue;
+    margin-bottom: 50px;
+}
+.profile .img-box{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+    flex-shrink: 0;
+}
+
+.profile h2{
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.profile .img-box img{
+    width: 100%;
+}
+
+.menu{
+    width: 80px;
+    height: 100vh;
+    background-color: #d6d5d2;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.menu:hover{
+    width: 300px;
+    transition: .5s;
+}
+
+ul{
+    list-style: none;
+    position: relative;
+    height: 95%;
+}
+
+ul li a{
+    display: block;
+    color: aliceblue;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    transition: .5s;
+}
+
+ul li a:hover{
+    background-color: #ffffff55;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.loug-out{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+
+
+ul li a i{
+    font-size: 30px;
+}
+
+ul li:first-child:hover{
+    background-color: #ffffff55;
+    cursor: pointer;
+}
+ul li a h2{
+    font-size: 18px;
+    font-weight: 300;
+}
+
+@media (max-width: 500px) {
+    .menu{
+        padding: 20px 10px;
+    }
+    .menu:hover{
+        width: 80px;
+    }
+    ul li a:hover{
+        background-color: transparent;
+    }
+  }
+  
+
+  @media (max-width: 380px) {
+    ul li a i{
+        font-size: 25px;
+    }
+
+    ul li a:hover{
+        background-color: transparent;
+    }
+
+    
+  }

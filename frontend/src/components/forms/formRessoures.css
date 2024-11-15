@@ -1,0 +1,89 @@
+header{
+    width: 100%;
+    height: 10vh;
+    background-color: #d6d5d2;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+
+header img{
+    padding-left: 8px;
+    width: 120px;
+}
+
+.add-ressource section , .edit-resource{
+    background-color: #EDECEC;
+    min-height: 90vh;
+    padding: 8px 20px;
+}
+
+form .ressource-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .ressource-info div{
+
+    width: calc(100%/ 2 - 20px);
+}
+
+.ressource-info input , select, textarea{
+    width: 100%;
+    outline: none;
+    border-radius: 5px ;
+    border: none;
+    padding: 3px 10px;
+    margin: 10px 0;
+}
+
+.ressource-info textarea{
+
+    height: 100px;
+    resize: none;
+}
+
+.ressource-info input , select{
+    height: 35px;
+    font-size: 15px;
+}
+
+.ressource-info span{
+    font-size: 20px;
+}
+
+.add-ressource button , .edit-resource button{
+    background-color: #000;
+    color: #fff;
+    margin-right: 8px;
+    outline: none;
+    font-weight: 700;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.edit-resource button:first-child{
+    margin-left: 8px;
+}
+
+@media (max-width: 500px) {
+    form .ressource-info div{
+        width: 100%;
+    }
+
+    header img{
+        margin-right: 40px;
+    }
+  }
+@media (max-width: 400px) {
+    
+
+    header img{
+        width: 100px;
+    }
+  }
