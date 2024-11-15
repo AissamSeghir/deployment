@@ -1,6 +1,7 @@
 import express from 'express';
 import connectDB from './config.js';
 import dotenv from 'dotenv';
+import cors from'cors'
 import cookieParser from "cookie-parser";
 import userRoutes from './routes/users.route.js';
 import authRoutes from './routes/auth.route.js'
@@ -11,6 +12,10 @@ dotenv.config();  // Initialize environment variables
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Replace with your frontend URL
+    credentials: true, // Enable cookies if needed
+}));
 app.use(express.json());
 app.use(cookieParser())
 app.use('/api/user', userRoutes);
