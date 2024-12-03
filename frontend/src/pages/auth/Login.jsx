@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import Logo from '/logo.svg';
-import './auth.css';
+import React, { useState } from "react";
+import Logo from "/logo.svg";
+import "./auth.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
 const authLogin = async ({ email, password }) => {
-  const response = await fetch('/api/auth/login', {
-    method: 'post',
+  const response = await fetch("/api/auth/login", {
+    method: "post",
     headers: {
-      'content-type': 'application/json',
+      "content-type": "application/json",
     },
     body: JSON.stringify({ email, password }),
   });
@@ -27,18 +27,22 @@ function Login() {
     password: "",
   });
 
-  const navigate = useNavigate();
+
   const queryClient = useQueryClient();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const { mutate: loginMutation, isLoading, isError, error } = useMutation({
+  const {
+    mutate: loginMutation,
+    isLoading,
+    isError,
+    error,
+  } = useMutation({
     mutationFn: authLogin,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["authUser"] });
-      navigate('/home'); // Redirect on success
+      queryClient.invalidateQueries();
     },
   });
 
@@ -74,9 +78,19 @@ function Login() {
         <button disabled={isLoading}>
           {isLoading ? "Signing in..." : "Sign in"}
         </button>
-        {isError && <p className="error">{error.message}</p>}
+        {isError && (
+          <p className="error">
+            {error.message.includes("Invalid")
+              ? "Invalid email or password"
+              : "An unexpected error occurred."}
+          </p>
+        )}
+
         <p>
-          Don't have an account? <span><Link to="/signup">Sign up</Link></span>
+          Don't have an account?{" "}
+          <span>
+            <Link to="/signup">Sign up</Link>
+          </span>
         </p>
       </form>
     </div>
