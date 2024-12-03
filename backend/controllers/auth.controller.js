@@ -5,6 +5,10 @@ import jwt from "jsonwebtoken";
 export const login = async (req, res) => {
     try {
       const { email, password } = req.body;
+      
+      if (!email || !password) {
+        return res.status(400).json({ error: "Email and password are required" });
+      }
   
       // Find user and verify password
       const user = await User.findOne({ email: email });

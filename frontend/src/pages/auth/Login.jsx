@@ -4,6 +4,22 @@ import './auth.css';
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link , useNavigate} from 'react-router-dom';
 
+const authLogin = async ({ email, password })=>{
+  const response = await fetch('/api/auth/login',{
+   method:'post',
+   headers :{
+     'content-type': 'application/json'
+   },
+   body: JSON.stringify({ email, password })
+  })
+  if (!response.ok) {
+    // const errorData = await res.json();
+    // throw new Error(errorData.error || "Something went wrong");
+    throw new Error("Something went wrong");
+  }
+  return response;
+}
+
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
@@ -19,22 +35,7 @@ function Login() {
   const queryClient = useQueryClient();
 
   const { mutate: loginMutation, isLoading, isError, error } = useMutation({
-    mutationFn: async ({ email, password }) => {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: 'include',
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || "Something went wrong");
-      }
-      return res.json();
-    },
+    mutationFn: authLogin,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
