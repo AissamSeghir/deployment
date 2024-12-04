@@ -24,13 +24,13 @@ export const login = async (req, res) => {
        // Generate JWT
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "15d" });
 
-    // // Set token as an HTTP-only cookie
-    // res.cookie("jwt", token, {
-    //   httpOnly: true,
-    //   maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
-    //   sameSite: "strict",
-    //   secure: process.env.NODE_ENV === "production",
-    // });
+    // Set token as an HTTP-only cookie
+    res.cookie("jwt", token, {
+      httpOnly: true,
+      maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
+      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production",
+    });
   
       // Send successful login response
       return res.status(200).json({
@@ -38,8 +38,8 @@ export const login = async (req, res) => {
         email: user.email,
       });
   
-    } catch (err) {
-      console.log("Error in login controller", err.message);
+    } catch (error) {
+      console.log("Error in login controller", error.message);
       res.status(500).json({ error: "Server error. Please try again later." });
     }
   };

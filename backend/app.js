@@ -24,8 +24,13 @@ dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 app.use(express.json());
 app.use(cookieParser())
-app.use('/api/user', userRoutes);
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 app.use('/api/auth',authRoutes)
+app.use('/api/user', userRoutes);
 app.use('/api/resources',resourceRoutes)
 
 if (process.env.NODE_ENV === "production") {
