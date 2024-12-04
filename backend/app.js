@@ -21,6 +21,7 @@ app.use(cors({
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
+app.options('*', cors()); // Handle preflight requests
 
 app.use(express.json());
 app.use(cookieParser())
