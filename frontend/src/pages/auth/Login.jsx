@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 
 const authLogin = async ({ email, password }) => {
-  const response = await fetch("/api/auth/login", {
+  const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, {
     method: "post",
     headers: {
       "content-type": "application/json",
