@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 const authLogin = async ({ email, password }) => {
   const response = await fetch(`https://deployment-z54s.onrender.com/api/auth/login`, {
     method: "post",
+    credentials:"include",
     headers: {
       "content-type": "application/json",
     },
