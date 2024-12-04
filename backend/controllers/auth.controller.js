@@ -22,8 +22,7 @@ export const login = async (req, res) => {
         return res.status(400).json({ error: "Invalid email or password" });
       }
 
-       // Generate JWT
-       generateTokenAndSetCookie(user._id,res);
+       
   
       // Send successful login response
       return res.status(200).json({
