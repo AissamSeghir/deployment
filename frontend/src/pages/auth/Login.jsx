@@ -49,6 +49,8 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitting form data:", formData);
+    console.log(import.meta.env.VITE_API_BASE_URL);
+    
     loginMutation(formData);
   };
 
