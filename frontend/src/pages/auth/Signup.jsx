@@ -5,7 +5,7 @@ import "./auth.css";
 import Logo from '/logo.svg'
 import { Link , useNavigate } from "react-router-dom";
 const addUser = async (newUser)=>{
-   const response = await fetch('/api/user',{
+   const response = await fetch('https://deployment-z54s.onrender.com/api/user',{
     method:'post',
     headers :{
       'content-type': 'application/json'

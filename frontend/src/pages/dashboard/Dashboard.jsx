@@ -14,7 +14,7 @@ function Dashboard({authUser}) {
   const { mutate: logout } = useMutation({
     mutationFn: async () => {
       try {
-        const res = await fetch("/api/auth/logout", {
+        const res = await fetch("https://deployment-z54s.onrender.com/api/auth/logout", {
           method: "POST",
         });
         const data = await res.json();

@@ -13,7 +13,7 @@ function App() {
     queryKey: ["authUser"],
     queryFn: async () => {
       try {
-        const res = await fetch("/api/auth/me");
+        const res = await fetch("https://deployment-z54s.onrender.com/api/auth/me");
         const data = await res.json();
         if (data.error) return null;
         if (!res.ok) {

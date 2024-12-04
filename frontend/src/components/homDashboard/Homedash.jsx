@@ -7,13 +7,13 @@ import EditResource from "../forms/EditResource";
 import ViewResource from "../viewResource/ViewResource";
 
 const fetchResources = async () => {
-  const response = await fetch(`/api/resources`);
+  const response = await fetch(`https://deployment-z54s.onrender.com/api/resources`);
   if (!response.ok) throw new Error("Error fetching resources");
   return response.json();
 };
 
 const deleteResource = async (resourceId) => {
-  const response = await fetch(`/api/resources/${resourceId}`, {
+  const response = await fetch(`https://deployment-z54s.onrender.com/api/resources/${resourceId}`, {
     method: "DELETE",
   });
   if (!response.ok) {

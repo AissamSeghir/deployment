@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 const updateResource = async (UpdateResource) => {
-  const res = await fetch(`/api/resources/${UpdateResource._id}`, {
+  const res = await fetch(`https://deployment-z54s.onrender.com/api/resources/${UpdateResource._id}`, {
     method: "put",
     headers: {
       "content-type": "application/json",

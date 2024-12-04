@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import "./formRessoures.css";
 
 const addResource = async (newResource) => {
-  const res = await fetch("/api/resources", {
+  const res = await fetch("https://deployment-z54s.onrender.com/api/resources", {
     method: "post",
     headers: {
       "content-type": "application/json",

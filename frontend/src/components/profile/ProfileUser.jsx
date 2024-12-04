@@ -6,7 +6,7 @@ import Logo from "/logo-transparent.png";
 import "./profileUser.css";
 
 const updateUser = async (updateUser) => {
-  const res = await fetch(`/api/user/${updateUser._id}`, {
+  const res = await fetch(`https://deployment-z54s.onrender.com/api/user/${updateUser._id}`, {
     method: "put",
     headers: {
       "content-type": "application/json",
@@ -21,7 +21,7 @@ const updateUser = async (updateUser) => {
 };
 
 const deleteUser = async (userId) => {
-  const res = await fetch(`/api/user/${userId}`, {
+  const res = await fetch(`https://deployment-z54s.onrender.com/api/user/${userId}`, {
     method: "DELETE",
   });
   if (!res.ok) {

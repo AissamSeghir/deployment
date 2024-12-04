@@ -42,7 +42,7 @@ function Login() {
   } = useMutation({
     mutationFn: authLogin,
     onSuccess: () => {
-      queryClient.invalidateQueries();
+      queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
   });
 
