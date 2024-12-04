@@ -29,6 +29,17 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://resource-manager1.onrender.com"); // Your frontend URL
+  res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS"); // Allowed HTTP methods
+  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization"); // Allowed headers
+  next();
+});
+app.use((req, res, next) => {
+  console.log("Incoming Cookies:", req.cookies);
+  next();
+});
 
 app.use('/api/auth',authRoutes)
 app.use('/api/user', userRoutes);
