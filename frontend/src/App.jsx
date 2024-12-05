@@ -15,7 +15,6 @@ function App() {
       try {
         const res = await fetch("https://deployment-z54s.onrender.com/api/auth/me", {
           method: 'GET',
-          credentials: 'include',  // Ensures cookies are included in the request
         });
         const data = await res.json();
         if (data.error) return null;

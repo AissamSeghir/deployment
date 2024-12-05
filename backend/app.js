@@ -16,7 +16,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(cors({
     origin: "https://resource-manager1.onrender.com", // Replace with your frontend URL
-    credentials: true, // Enable cookies if needed
 }));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,9 +30,7 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://resource-manager1.onrender.com"); // Your frontend URL
-  res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS"); // Allowed HTTP methods
-  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization"); // Allowed headers
   next();
 });
 app.use((req, res, next) => {
